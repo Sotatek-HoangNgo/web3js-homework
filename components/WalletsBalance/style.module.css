@@ -1,0 +1,16 @@
+.table {
+	width: 100%;
+}
+
+.table-container {
+	width: 50%;
+	min-width: 300px;
+}
+
+.table-cell {
+	text-align: center;
+}
+
+.empty-cell-message {
+	text-align: center;
+}

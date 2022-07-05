@@ -1,0 +1,15 @@
+.input,
+.submit-btn {
+	display: block;
+	margin: 0.5rem auto;
+}
+
+.error-message {
+	margin: 0.5rem auto;
+	color: red;
+	text-align: center;
+}
+
+.submit-btn:disabled {
+	cursor: not-allowed;
+}
