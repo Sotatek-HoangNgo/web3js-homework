@@ -16,12 +16,11 @@ export const walletAddresses = [
 	"0xaf5fd40b05aff3fa89072d8b8082ba69148c0d3b",
 ];
 
-export function convertWalletToWalletBalanceQuery() {
-	const contract = getContractInstance();
+export function convertWalletToWalletBalanceQuery(contract: any) {
 	if (contract) {
 		return walletAddresses.map((walletAddress) => {
 			return (callback: any) =>
-				contract.methods.balanceOf(walletAddress).call.request(
+				contract.balanceOf(walletAddress).call.request(
 					{
 						from: process.env.NEXT_PUBLIC_MY_WALLET_ADDRESS,
 					},
@@ -33,8 +32,8 @@ export function convertWalletToWalletBalanceQuery() {
 	return [];
 }
 
-export async function getWalletsBalances() {
-	return await multicallContract(convertWalletToWalletBalanceQuery());
+export async function getWalletsBalances(contract: any) {
+	return await multicallContract(convertWalletToWalletBalanceQuery(contract));
 }
 
 export function getWeb3Instance() {
@@ -57,20 +56,19 @@ export function getContractInstance(
 
 export async function getAccountBallances(
 	walletAddress: string = process.env.NEXT_PUBLIC_MY_WALLET_ADDRESS || "",
+	contract: any,
 ) {
-	const contract = getContractInstance();
 	if (contract) {
-		const accountBallance = await contract.methods.balanceOf(walletAddress).call();
+		const accountBallance = await contract.balanceOf(walletAddress);
 		return accountBallance;
 	}
 
 	return -1;
 }
 
-export async function getTokenSymbol() {
-	const contract = getContractInstance();
+export async function getTokenSymbol(contract: any) {
 	if (contract) {
-		const tokenSymbol = await contract.methods.symbol().call();
+		const tokenSymbol = await contract.symbol();
 		return tokenSymbol;
 	}
 
