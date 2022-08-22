@@ -1,0 +1,20 @@
+.container {
+	min-width: 400px;
+	padding: 1rem 2.5rem;
+	border-radius: 1rem;
+	background-color: #fff;
+}
+
+.btn {
+	display: block;
+	margin: 1rem auto;
+}
+
+.btn--logout {
+	float: right;
+}
+
+.container--loged-in {
+	display: flex;
+	align-items: flex-start;
+}
